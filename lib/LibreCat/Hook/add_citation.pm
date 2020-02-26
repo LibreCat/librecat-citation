@@ -4,7 +4,7 @@ package LibreCat::Hook::add_citation;
 
 =head1 NAME
 
-LibreCat::Hook::add_citation - add a 'citation' field calculated from the data
+LibreCat::Hook::add_citation - add a 'citation' object calculated from the data
 
 =cut
 

@@ -2,7 +2,7 @@ citation:
 
   # engine for citation generation
   # possible values are 'csl' or 'none'
-  engine: none
+  engine: csl
 
   # example 'csl' style citation generation
   # see: https://github.com/LibreCat/LibreCat/wiki/Citation-Style-Language

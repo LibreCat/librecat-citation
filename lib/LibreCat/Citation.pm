@@ -116,16 +116,16 @@ sub create {
 
 LibreCat::Citation::CSL - creates citations via a CSL engine
 
-=head1 SYNOPSIS
+=head2 SYNOPSIS
 
-    use LibreCat::Citation;
+    use LibreCat::Citation::CSL;
 
-    my $data = {};
+    my $data = {...};
     my $styles = LibreCat::Citation::CSL->new(all => 1)->create($data);
     # or
     LibreCat::Citation->new(style => 'apa')->creat($data);
 
-=head1 CONFIGURATION
+=head2 CONFIGURATION
 
     # config/citation.yml
     prefix:
@@ -216,3 +216,22 @@ around "add" => sub {
 };
 
 1;
+
+=pod
+
+=head1 NAME
+
+LibreCat::Citation - a wrapper for ciations
+
+=head2 SYNOPSIS
+
+    use LibreCat::Citation;
+
+    my $data = {...};
+    LibreCat::Citation->new()->add($data);
+
+=head2 SEE ALSO
+
+L<LibreCat::Hook::add_citation>
+
+=cut
