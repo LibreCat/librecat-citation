@@ -1,4 +1,4 @@
-package LibreCat::Hook::add_citation;
+package LibreCat::Hook::delete_citation;
 
 use Catmandu::Sane;
 use LibreCat::Citation;
@@ -13,7 +13,7 @@ sub _build_citation {
 sub fix {
     my ($self, $data) = @_;
 
-    my $citation = $self->citation->add($data);
+    my $citation = $self->citation->delete($data);
 
     return $data;
 }
@@ -24,14 +24,14 @@ sub fix {
 
 =head1 NAME
 
-LibreCat::Hook::add_citation - add a 'citation' object calculated from the data
+LibreCat::Hook::delete_citation - delete citations from citation-db
 
 =head2 SYNOPSIS
 
     # in your config
     hooks:
-      publication-update:
+      publication-delete:
         after_fixes:
-          - add_citation
+         - delete_citation
 
 =cut
