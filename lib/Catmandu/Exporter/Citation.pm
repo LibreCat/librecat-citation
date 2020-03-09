@@ -2,6 +2,7 @@ package Catmandu::Exporter::Citation;
 
 use Catmandu::Sane;
 use Catmandu::Exporter::Template;
+use FindBin qw($Bin);
 use Pandoc;
 use Moo;
 use namespace::clean;
@@ -35,9 +36,9 @@ sub _build__exporter {
     my ($self) = @_;
 
     my $exp = Catmandu::Exporter::Template->new(
-        template_before => "./citation_before.tt",
-        template => "./citation.tt",
-        template_after => "./citation_after.tt",
+        template_before => "$Bin/../../../views/citation_before.tt",
+        template => "$Bin/../../../views/citation.tt",
+        template_after => "$Bin/../../../views/citation_after.tt",
         file => \$self->{_buffer},
     );
 }

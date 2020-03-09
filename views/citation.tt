@@ -1,0 +1,12 @@
+<li>
+[%- IF style == "short" %]
+<a href="[% host %]/record/[% _id %]">[% title | html %]</a><br />
+[%- END %]
+[%- citation.$style %]
+[%- IF links == "1" %]
+<br> <a href="[% host %]/record/[% _id %]">[% name %]: [% _id %]</a>
+[%- IF doi %]<br /> <a href="https://doi.org/[% doi | html %]">[% doi | html %]</a>[% END %]
+[%- IF external_id.isi %]<br > <a href="https://ws.isiknowledge.com/cps/openurl/service?url_ver=Z39.88-2004&rft_id=info:ut/[% external_id.isi.0 %]">WoS: [% external_id.isi.0 %]</a>[% END %]
+[%- IF external.pmid %]<br /> <a href="https://www.ncbi.nlm.nih.gov/pubmed/[% external.pmid %]">PMID: [% external.pmid %]</a>[% END %]
+[%- END %]
+</li>
