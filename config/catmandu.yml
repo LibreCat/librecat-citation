@@ -23,3 +23,27 @@ store:
       bags:
         citation:
           plugins: ['Datestamps']
+
+route:
+  exporter:
+    publication:
+      docx:
+        package: Citation
+        content_type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        options:
+          fix: ["nothing()"]
+          extension: docx
+          label: DOCX
+          format: docx
+          name: LibreCat
+          host: http://librecat.org
+      odt:
+        package: Citation
+        content_type: 'application/vnd.oasis.opendocument.text'
+        options:
+          fix: ["nothing()"]
+          extension: odt
+          label: ODT
+          format: odt
+          name: LibreCat
+          host: http://librecat.org
