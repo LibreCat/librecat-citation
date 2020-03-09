@@ -90,7 +90,7 @@ sub create {
 
         my $found = 0;
         foreach my $s (@{$self->styles}) {
-            my $locale = ($s eq 'dgps') ? 'de' : $self->locale;
+            my $locale   = ($s eq 'dgps') ? 'de' : $self->locale;
             my $citation = $self->_request(
                 {
                     locale  => $locale,
@@ -153,58 +153,48 @@ use namespace::clean;
 extends "LibreCat::Validator::JSONSchema";
 
 has namespace => (
-    is => "ro",
-    default => sub { "validator.citation.errors" },
+    is       => "ro",
+    default  => sub {"validator.citation.errors"},
     init_arg => undef
 );
 
 has schema => (
-    is => "ro",
-    lazy => 1,
+    is      => "ro",
+    lazy    => 1,
     default => sub {
         return +{
-            '$schema'   => "http://json-schema.org/draft-04/schema#",
-            title       => "librecat audit record",
-            type        => "object",
-            properties  => {
+            '$schema'  => "http://json-schema.org/draft-04/schema#",
+            title      => "librecat audit record",
+            type       => "object",
+            properties => {
                 id => {
                     oneOf => [
-                        {
-                            type => "string",
-                            minLength => 1
-                        },
-                        {
-                            type => "integer",
-                            minimum => 0
-                        }
-                        ]
-                    },
-                citation => {
-                    type => "object",
+                        {type => "string",  minLength => 1},
+                        {type => "integer", minimum   => 0}
+                    ]
                 },
+                citation => {type => "object",},
             },
-            required => ["id","citation"],
+            required             => ["id", "citation"],
             additionalProperties => 0
         };
     }
 );
 
 has bag => (
-    is => "ro",
-    lazy => 1,
+    is      => "ro",
+    lazy    => 1,
     default => sub {
         Catmandu->store("main")->bag("citation");
     },
     init_arg => undef,
-    handles => "Catmandu::Bag",
+    handles  => "Catmandu::Bag",
 );
 
-has citation_engine => (
-    is => "lazy",
-);
+has citation_engine => (is => "lazy",);
 
 sub _build_citation_engine {
-        LibreCat::Citation::CSL->new(all => 1);
+    LibreCat::Citation::CSL->new(all => 1);
 }
 
 around "add" => sub {

@@ -92,7 +92,7 @@ sub _get {
 
     croak "usage: $0 get <id>" unless defined($id);
 
-    my $bag = LibreCat::Citation->new();
+    my $bag  = LibreCat::Citation->new();
     my $data = $bag->get($id);
 
     Catmandu->export($data, 'YAML') if $data;
@@ -105,7 +105,7 @@ sub _add {
 
     croak "usage: $0 add <FILE>" unless defined($file) && -r $file;
 
-    my $ret = 0;
+    my $ret      = 0;
     my $importer = Catmandu->importer('YAML', file => $file);
 
     my $bag = LibreCat::Citation->new();
@@ -114,9 +114,9 @@ sub _add {
         on_validation_error => sub {
             my ($rec, $errors) = @_;
             say STDERR join("\n",
-                $rec->{_id}, "ERROR: not a valid citation record",map {
-                    $_->localize();
-                } @$errors);
+                $rec->{_id},
+                "ERROR: not a valid citation record",
+                map {$_->localize();} @$errors);
             $ret = 2;
         },
         on_success => sub {

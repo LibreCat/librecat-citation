@@ -26,8 +26,7 @@ require_ok $pkg;
 
 is_deeply $pkg->new()->fix({foo => 'bar'}), {foo => 'bar'};
 
-is_deeply $pkg->new(citation => T::TestEngine->new)
-    ->fix({foo => 'bar'}),
+is_deeply $pkg->new(citation => T::TestEngine->new)->fix({foo => 'bar'}),
     {foo => 'bar', citation => {test => 'this is a citation'},};
 
 done_testing;

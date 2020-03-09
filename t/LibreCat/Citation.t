@@ -14,7 +14,7 @@ BEGIN {
 
 require_ok $pkg;
 
-lives_ok { $pkg->new() } 'lives_ok';
+lives_ok {$pkg->new()} 'lives_ok';
 
 done_testing;
 
